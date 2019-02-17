@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // register document's folder listener
         self.setupDocumentListener()
         // load themes if necessary
-        self.setupThemes()
+        DataManager.setupDefaultTheme()
 
         if let activityDictionary = launchOptions?[.userActivityDictionary] as? [UIApplicationLaunchOptionsKey: Any],
             let activityType = activityDictionary[.userActivityType] as? String,
@@ -245,11 +245,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataManager.processFile(at: url)
             }
         }
-    }
-
-    func setupThemes() {
-        let library = DataManager.getLibrary()
-        DataManager.setupDefaultThemes(in: library)
-        ThemeManager.shared.library = library
     }
 }
